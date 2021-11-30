@@ -19,8 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/hallo', 'PostController@hallo');
+Route::get('/hallo', [PostController::class, 'hallo']);
+
 Route::get('/test', [TestController::class, 'test'])->name('test');
 
+// {name}
 Route::get('/welcome/{name?}', [TestController::class, 'welcome']);
 
 Route::prefix('/post')->group(function () {
@@ -28,8 +32,6 @@ Route::prefix('/post')->group(function () {
     Route::get('/create', [PostController::class, 'create'])->name('post.create');
     Route::post('/store', [PostController::class, 'store'])->name('post.store');
 
-    Route::get('/list', function() {
-        return 'post liste';
-    })->name('post.list');
+    Route::get('/list', [PostController::class, 'list'])->name('post.list');
 
 });

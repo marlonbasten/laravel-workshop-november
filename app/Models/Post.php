@@ -16,6 +16,11 @@ class Post extends Model
         'content',
     ];
 
+    // public function __construct()
+    // {
+    //     static::preventLazyLoading();
+    // }
+
     // Accessor
     public function getTitleAttribute($value) {
         return lcfirst($value);
@@ -24,5 +29,15 @@ class Post extends Model
     // Mutator
     public function setTitleAttribute($value) {
         $this->attributes['title'] = strtoupper($value);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 }
