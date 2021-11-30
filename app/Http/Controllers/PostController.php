@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('post.index');
+        $posts = Post::with('categories')->orderBy('id', 'desc')->paginate(10);
+        return view('post.index')->with(compact('posts'));
     }
 
     /**
@@ -79,6 +81,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::where('id', $id)->delete();
+        return 'gelöscht.';
     }
 }
