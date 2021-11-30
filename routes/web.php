@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +38,5 @@ Route::get('/welcome/{name?}', [TestController::class, 'welcome']);
 // });
 
 Route::resource('post', PostController::class);
+
+Route::resource('comment', CommentController::class)->only(['store']);

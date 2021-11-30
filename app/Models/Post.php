@@ -16,6 +16,12 @@ class Post extends Model
         'content',
     ];
 
+    protected $with = [
+        // Lade folgende relations automatisch mit:
+        'comments',
+        'categories'
+    ];
+
     // public function __construct()
     // {
     //     static::preventLazyLoading();
