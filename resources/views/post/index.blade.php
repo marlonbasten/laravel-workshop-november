@@ -15,7 +15,9 @@
         @foreach ($posts as $post)
             <tr>
                 <th scope="row">{{ $post->id }}</th>
-                <td>{{ substr($post->content, 0, 15) }}</td>
+                <td><a href="{{ route('post.show', $post->id) }}">
+                    {{ substr($post->content, 0, 15) }}
+                </a></td>
                 <td>
                     @foreach ($post->categories as $category)
                         <span class="badge badge-secondary">{{ $category->name }}</span>

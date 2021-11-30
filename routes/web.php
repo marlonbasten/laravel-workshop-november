@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
@@ -40,3 +41,5 @@ Route::get('/welcome/{name?}', [TestController::class, 'welcome']);
 Route::resource('post', PostController::class);
 
 Route::resource('comment', CommentController::class)->only(['store']);
+
+Route::resource('category', CategoryController::class)->only(['store']);
