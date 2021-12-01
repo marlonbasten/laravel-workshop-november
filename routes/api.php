@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/test', [ApiController::class, 'test']);
+
+//// Alle posts bekommen
+//Route::get('/post', [\App\Http\Controllers\PostController::class, 'index']);
+//// Einen post bekommen
+//Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'show']);
+//// Einen post erstellen
+//Route::post('/post', [\App\Http\Controllers\PostController::class, 'store']);
+//// Einen post updaten
+//Route::patch('/post/{id}', [\App\Http\Controllers\PostController::class, 'update']);
+//// Einen post löschen
+//Route::delete('/post/{id}', [\App\Http\Controllers\PostController::class, 'destroy']);
