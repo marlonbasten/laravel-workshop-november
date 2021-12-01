@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+
 
 class PostController extends Controller
 {
@@ -47,7 +49,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        // return view('post.show')->withPost($post);
+        if(!Gate::allows('showpost', $post)){
+            abort(403);
+        }
+        //return view('post.show')->withPost($post);
         return view('post.show')->with(compact('post'));
     }
 

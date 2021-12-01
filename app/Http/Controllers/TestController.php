@@ -2,29 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\BulkDeletePost;
+use App\Mail\WelcomeMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class TestController extends Controller
 {
     public function test()
     {
-        $name = 'Marlon';
-        $city = 'Düsseldorf';
-        $age = 18;
+        BulkDeletePost::dispatch([110, 111]);
 
-        $userList = [
-            [
-                'name' => 'Max Mustermann',
-                'city' => 'Berlin',
-            ],
-            [
-                'name' => 'Marlon Basten',
-                'city' => 'Düsseldorf',
-            ],
-        ];
-
-        return view('test')
-            ->with(compact('name', 'city', 'age', 'userList'));
+        return 'mail gesendet';
     }
 
     public function welcome(string $name = null)
