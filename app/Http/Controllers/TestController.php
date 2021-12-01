@@ -27,4 +27,20 @@ class TestController extends Controller
         }
         return 'Willkommen, '.$name;
     }
+
+    public function toAdmin()
+    {
+        if (!session()->exists('previous_user_id')) {
+            abort(403);
+        }
+
+        $previous_user_id = session()->get('previous_user_id');
+        $user = User::find($previous_user_id);
+
+        \Auth::login($user);
+
+        session()->remove('previous_user_id');
+
+        return redirect()->route('home');
+    }
 }

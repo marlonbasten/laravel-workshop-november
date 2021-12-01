@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ApiController extends Controller
 {
@@ -19,9 +21,12 @@ class ApiController extends Controller
 
     public function index(Request $request)
     {
-        if (!auth()->user()->tokenCan('post:list')) {
-            abort(403);
-        }
+        Log::error('test');
+
+//        $user = User::find(5);
+//        session()->put('previous_user_id', auth()->id());
+//        \Auth::login($user);
+//        auth()->user();
 
         $posts = Post::query();
 
