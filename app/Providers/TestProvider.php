@@ -25,7 +25,7 @@ class TestProvider extends ServiceProvider
      */
     public function boot()
     {
-        Post::preventLazyLoading();
+        //Post::preventLazyLoading();
         Paginator::useBootstrap();
     }
 }

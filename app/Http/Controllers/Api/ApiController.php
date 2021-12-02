@@ -16,7 +16,7 @@ class ApiController extends Controller
     {
         $post = Post::find(117);
 
-        return PostResource::make($post);
+        return $post;
     }
 
     public function index(Request $request)
