@@ -38,9 +38,7 @@ class HomeController extends Controller
                 ->create();
 
          */
-
-        $hospitals = Hospital::with('locations.facilities')->orderBy('id', 'desc')->take(10)->get();
-
-        return view('home')->with(compact('hospitals'));
+        
+        return view('home');
     }
 }

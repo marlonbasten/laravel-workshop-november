@@ -15,25 +15,9 @@
                     @endif
 
                     <ul>
-                    @foreach($hospitals as $hospital)
-                        <li>
-                            {{ $hospital->name }}
-                            @if ($hospital->locations)
-                                <ul>
-                                    @foreach($hospital->locations as $location)
-                                        <li>{{ $location->street }}, {{ $location->city }}</li>
-                                        @if ($location->facilities)
-                                            <ul>
-                                                @foreach($location->facilities as $facility)
-                                                    <li>{{ $facility->name }}</li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            @endif
-                        </li>
-                    @endforeach
+
+                        @livewire('hospital-tree')
+
                     </ul>
                 </div>
             </div>
